@@ -5,21 +5,23 @@
 
 
 AVTCORE Working Group                                           B. Aboba
-INTERNET-DRAFT                                     Microsoft Corporation
-Category: Informational
-Expires: October 11, 2023                                  11 April 2023
+INTERNET-DRAFT                                                 P. Hancke
+Updates: 7742                                      Microsoft Corporation
+Category: Standards Track
+Expires: January 24, 2024                                   24 July 2023
+
 
                         H.265 Profile for WebRTC
-                 draft-aboba-avtcore-hevc-webrtc-00.txt
+                 draft-aboba-avtcore-hevc-webrtc-01.txt
 
 Abstract
 
    RFC 7742 defines WebRTC video processing and codec requirements,
    including guidance for endpoints supporting the VP8 and H.264 codecs,
    which are mandatory to implement.  With support for H.265 under
-   development in WebRTC browsers, the need has arisen to provide
-   similar guidance for browsers desiring to support the (optional)
-   H.265 codec, whose RTP payload format is defined in RFC 7798.
+   development in WebRTC browsers, similar guidance is needed for
+   browsers considering support for the H.265 codec, whose RTP payload
+   format is defined in RFC 7798.
 
 Status of This Memo
 
@@ -36,9 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 11, 2023.
-
-
+   This Internet-Draft will expire on January 24, 2024.
 
 
 
@@ -57,7 +57,7 @@ Status of This Memo
 
 Aboba, et. al                Standards Track                    [Page 1]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC           11 April 2023
+INTERNET-DRAFT          H.265 Profile for WebRTC            24 July 2023
 
 
 Copyright Notice
@@ -113,18 +113,19 @@ Table of Contents
 
 Aboba, et. al                Standards Track                    [Page 2]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC           11 April 2023
+INTERNET-DRAFT          H.265 Profile for WebRTC            24 July 2023
 
 
 1.  Introduction
 
    "RTP Payload Format for High Efficiency Video Coding (HEVC)"
-   [RFC7798] defines the encapsulation of H.265 within the Real-time
-   Transport Protocol (RTP).  While "WebRTC Video Processing and Codec
-   Requirements" [RFC7742] provides guidance for endpoints supporting
-   the mandatory to implement VP8 and H.264 codecs, it does not cover
-   H.265. With H.265 support under development within WebRTC browsers,
-   the need has arisen to profile [RFC7798] for WebRTC implementations
+   [RFC7798] defines the encapsulation of H.265 [H.265] within the Real-
+   time Transport Protocol (RTP) [RFC3550].  While "WebRTC Video
+   Processing and Codec Requirements" [RFC7742] provides guidance for
+   endpoints supporting the mandatory to implement VP8 and H.264 codecs,
+   it does not cover H.265. With H.265 support under development within
+   browsers [HEVC-WebKit][HEVC-Chrome] there is a need to for an
+   interoperability profile of [RFC7798] for WebRTC implementations
    choosing to support H.265.
 
 1.1.  Terminology
@@ -137,53 +138,55 @@ INTERNET-DRAFT          H.265 Profile for WebRTC           11 April 2023
 
 2.  H.265 Support
 
-   WebRTC browsers and non-browsers MAY implement the H.265 video codec
-   as described in [RFC7798] and [HEVC]. WebRTC browsers and non-
-   browsers supporting H.265 MUST support receiving, and MAY support the
-   ability to send H.265.
+   Support for the H.265 video codec is OPTIONAL for WebRTC browsers and
+   non-browsers.  Implementations supporting H.265 that conform to this
+   specification MUST support receiving H.265 and MAY support sending
+   H.265.
 
-   For the [HEVC] codec, endpoints MUST support the payload formats
-   defined in [RFC7798].  In addition, they MUST support Main Profile
-   Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4
-   (level-id=120).
+   For the H.265 [H.265] codec, endpoints MUST support the payload
+   formats defined in [RFC7798].  In addition, they MUST support Main
+   Profile Level 3.1 (level-id=93) and SHOULD support Main Profile Level
+   4 (level-id=120).
 
-   Implementations of the HEVC codec have utilized a wide variety of
+   Implementations of the H.265 codec have utilized a wide variety of
    optional parameters.  To improve interoperability, the following
    parameter settings are specified:
 
-   level-id:  Implementations MUST include this parameter within SDP and
+   level-id: Implementations MUST include this parameter within SDP and
    MUST interpret it when receiving it.
 
    max-fps, max-cpb, max-dpb, and max-br:
 
    These parameters allow the implementation to specify that they can
-   support certain features of HEVC at higher rates and values than
+   support certain features of H.265 at higher rates and values than
    those signaled by their level (set with level-id).  Implementations
    MAY include these parameters in their SDP, but they SHOULD interpret
    them when receiving them, allowing them to send the highest quality
    of video possible.
 
-   sprop-vps, sprop-sps, sprop-pps, sprop-sei: HEVC allows sequence and
 
 
 
 Aboba, et. al                Standards Track                    [Page 3]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC           11 April 2023
+INTERNET-DRAFT          H.265 Profile for WebRTC            24 July 2023
 
 
+   sprop-sps, sprop-pps, sprop-vps, sprop-sei: H.265 allows sequence and
    picture information to be sent both in-band and out-of-band.  WebRTC
    implementations MUST signal this information in-band.  This means
    that WebRTC implementations MUST NOT include these parameters in the
-   SDP they generate.
+   SDP they generate, and SHOULD silently ignore these parameters if
+   they are received..
 
    When the use of the video orientation (CVO) RTP header extension is
    not signaled as part of the SDP, H.265 implementations MAY send and
    SHOULD support proper interpretation of Display Orientation SEI
    messages.
 
-   Unless otherwise signaled, implementations that use H.265 MUST encode
-   and decode pixels with an implied 1:1 (square) aspect ratio.
+   Unless otherwise signaled, WebRTC implementations that support H.265
+   MUST encode and decode pixels with an implied 1:1 (square) aspect
+   ratio.
 
 3.  Security Considerations
 
@@ -202,50 +205,54 @@ INTERNET-DRAFT          H.265 Profile for WebRTC           11 April 2023
 
 5.1.  Normative References
 
-[HEVC]       ITU-T, "High efficiency video coding", ITU-T Recommendation
-             H.265, April 2013.
+[H.265]        ITU-T, "High efficiency video coding", ITU-T
+               Recommendation H.265, April 2013.
 
-[RFC2119]    Bradner, S., "Key words for use in RFCs to Indicate
-             Requirement Levels", BCP 14, RFC 2119, DOI
-             10.17487/RFC2119, March 1997, <http://www.rfc-
-             editor.org/info/rfc2119>.
+[RFC2119]      Bradner, S., "Key words for use in RFCs to Indicate
+               Requirement Levels", BCP 14, RFC 2119, DOI
+               10.17487/RFC2119, March 1997, <https://www.rfc-
+               editor.org/info/rfc2119>.
 
-[RFC3550]    Schulzrinne, H., Casner, S., Frederick, R., and V.
-             Jacobson, "RTP: A Transport Protocol for Real-Time
-             Applications", STD 64, RFC 3550, DOI 10.17487/RFC3550, July
-             2003, <http://www.rfc-editor.org/info/rfc3550>.
+[RFC3550]      Schulzrinne, H., Casner, S., Frederick, R., and V.
+               Jacobson, "RTP: A Transport Protocol for Real-Time
+               Applications", STD 64, RFC 3550, DOI 10.17487/RFC3550,
+               July 2003, <https://www.rfc-editor.org/info/rfc3550>.
 
-[RFC3711]    Baugher, M., McGrew, D., Naslund, M., Carrara, E., and K.
-             Norrman, "The Secure Real-time Transport Protocol (SRTP)",
-             RFC 3711, DOI 10.17487/RFC3711, March 2004,
-             <http://www.rfc-editor.org/info/rfc3711>.
-
+[RFC7742]      Roach, A. B., "WebRTC Video Processing and Codec
+               Requirements", RFC 7742, DOI 10.17487/RFC7742, March
 
 
 
 Aboba, et. al                Standards Track                    [Page 4]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC           11 April 2023
+INTERNET-DRAFT          H.265 Profile for WebRTC            24 July 2023
 
 
-[RFC7798]    Wang, Y.K., Sanchez, Y., Schierl, T., Wenger, S. and M. M.
-             Hannuksela, "RTP Payload Format for High Efficiency Video
-             Coding (HEVC)", RFC 7798, DOI 10.17487/RFC7798, March 2016,
-             <https://www.rfc-editor.org/info/rfc7798>.
+               2016, <https://www.rfc-editor.org/info/rfc7742>.
 
-[RFC8174]    Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119
-             Key Words", RFC 8174, DOI 10.17487/RFC8174, May 2017,
-             <https://www.rfc-editor.org/info/rfc8174>.
+[RFC7798]      Wang, Y.K., Sanchez, Y., Schierl, T., Wenger, S. and M.
+               M. Hannuksela, "RTP Payload Format for High Efficiency
+               Video Coding (HEVC)", RFC 7798, DOI 10.17487/RFC7798,
+               March 2016, <https://www.rfc-editor.org/info/rfc7798>.
+
+[RFC8174]      Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+               2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May
+               2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 5.2.  Informative References
 
-[RFC7742]    Roach, A. B., "WebRTC Video Processing and Codec
-             Requirements", RFC 7742, DOI 10.17487/RFC7742, March 2016,
-             <https://www.rfc-editor.org/info/rfc7742>.
+[HEVC-WebKit]  Shin, S. Qiu, J. and J. Zhu, "WebRTV HEVC RFC 7798 RTP
+               Payload Format Implementation",
+               https://github.com/WebKit/WebKit/pull/15494 (work in
+               progress), retrieved July 9, 2023.
+
+[HEVC-Chrome]  "Issue 13485: Need the support of H.265",
+               https://bugs.chromium.org/p/webrtc/issues/detail?
+               id=13485 (work in progress), submitted December 8, 2021.
 
 Acknowledgments
 
-   We would like to thank Stefan Wenger, Philipp Hancke, and Harald
+   We would like to thank Stefan Wenger, Jonathan Lennox, and Harald
    Alvestrand for their discussions of this problem space.
 
 Authors' Addresses
@@ -258,18 +265,11 @@ Authors' Addresses
 
    Email:  bernard.aboba@gmail.com
 
+   Philipp Hancke
+   Microsoft Corporation
+   Talinn, Estonia
 
-
-
-
-
-
-
-
-
-
-
-
+   Email: philipp.hancke@gmail.com
 
 
 
