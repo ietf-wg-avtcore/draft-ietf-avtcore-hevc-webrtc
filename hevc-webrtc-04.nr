@@ -135,7 +135,7 @@ level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
 value of 93 (i.e., level 3.1) MUST be inferred.
 
-max-fps, max-cpb, max-dpb, and max-br:
+max-fps and max-br:
 
 These parameters allow the implementation to specify that they can
 support certain features of H.265 at higher rates and values than
