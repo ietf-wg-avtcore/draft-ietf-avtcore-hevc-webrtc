@@ -224,7 +224,7 @@ submitted December 8, 2021.
 Acknowledgments
 
 .in +0.3i
-We would like to thank Stephan Wenger, Jonathan Lennox, Harald Alvestrand
+We would like to thank Stephan Wenger, Jonathan Lennox, Harald Alvestrand,
 Jianlin Qiu and Philip Eliasson for their discussions of this problem space.
 .in -0.3i
 
