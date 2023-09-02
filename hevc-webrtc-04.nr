@@ -213,7 +213,7 @@ RFC 8174, DOI 10.17487/RFC8174, May 2017,
 .R
 Informative References
 .IP [HEVC-WebKit] 15
-Shin, S. Qiu, J. and J. Zhu, "WebRTV HEVC RFC 7798 RTP Payload Format Implementation",
+Shin, S. Qiu, J. and J. Zhu, "WebRTC HEVC RFC 7798 RTP Payload Format Implementation",
 https://github.com/WebKit/WebKit/pull/15494 (work in progress),
 retrieved July 9, 2023.
 .IP [HEVC-Chrome]
