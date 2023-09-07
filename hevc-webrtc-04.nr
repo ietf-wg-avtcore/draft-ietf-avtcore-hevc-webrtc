@@ -135,6 +135,8 @@ level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
 value of 93 (i.e., level 3.1) MUST be inferred.
 
+recv-sub-layer-id: Answers SHOULD NOT include recv-sub-layer-id.
+
 max-fps, max-cpb, max-dpb, and max-br:
 
 These parameters allow the implementation to specify that they can
