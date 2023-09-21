@@ -128,7 +128,7 @@ Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4 (level-id=120).
 Also, endpoints MUST support the payload formats defined in [RFC7798], with
 the exception of Temporal Scalability Control Information (TSCI), defined
 in [RFC7798] Section 4.5. Rather than communicating TSCI using the PACI
-Extensions defined in [[RFC7798] Section 4.4.4.2, WebRTC HEVC
+Extensions defined in [RFC7798] Section 4.4.4.2, WebRTC HEVC
 implementations SHOULD communicate TSCI using RTP header extensions
 such as the Dependency Descriptor [DD].
 
