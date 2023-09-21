@@ -149,7 +149,7 @@ to be sent both in-band and out-of-band.  WebRTC implementations
 MUST signal this information in-band.  This means that WebRTC
 implementations MUST NOT include these parameters in the SDP they
 generate, and SHOULD silently ignore these parameters if they
-are received..
+are received.
 
 When the use of the video orientation (CVO) RTP header extension is
 not signaled as part of the SDP, H.265 implementations MAY send and
