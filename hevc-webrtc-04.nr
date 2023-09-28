@@ -135,15 +135,6 @@ level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
 value of 93 (i.e., level 3.1) MUST be inferred.
 
-max-fps, max-cpb, max-dpb, and max-br:
-
-These parameters allow the implementation to specify that they can
-support certain features of H.265 at higher rates and values than
-those signaled by their level (set with level-id).
-Implementations MAY include these parameters in their SDP, but
-they SHOULD interpret them when receiving them, allowing them to
-send the highest quality of video possible.
-
 sprop-sps, sprop-pps, sprop-vps, sprop-sei: H.265 allows sequence and picture information
 to be sent both in-band and out-of-band.  WebRTC implementations
 MUST signal this information in-band.  This means that WebRTC
