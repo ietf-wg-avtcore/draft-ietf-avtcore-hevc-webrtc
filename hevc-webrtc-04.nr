@@ -131,9 +131,9 @@ Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4 (level-id=120).
 is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
 A WebRTC implementation that has negotiated use of RTP header extensions
 containing TSCI information (such as the Dependency Descriptor [DD]) SHOULD 
-NOT send TSCI information within the PACI, and where TSCI information is
-being received in RTP header extensions MUST ignore TSCI information
-contained in the PACI.
+NOT send TSCI information within the PACI.  If TSCI information is
+being received in an RTP header extension, implementations MUST
+ignore TSCI information contained in the PACI.
 
 Implementations of the H.265 codec have utilized a wide variety of
 optional parameters.  To improve interoperability, the following
