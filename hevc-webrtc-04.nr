@@ -135,6 +135,12 @@ level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
 value of 93 (i.e., level 3.1) MUST be inferred.
 
+tx-mode: Implementations SHOULD NOT include this parameter within SDP.
+If no tx-mode parameter is present, a value of "SRST" MUST be inferred.
+Support for the "MRST" and "MRMT" modes is OPTIONAL; implementations
+that do not support the "MRST" or "MRMT" modes MUST NOT include these
+modes in the tx-mode parameter.
+
 sprop-sps, sprop-pps, sprop-vps, sprop-sei: H.265 allows sequence and picture information
 to be sent both in-band and out-of-band.  WebRTC implementations
 MUST signal this information in-band.  This means that WebRTC
