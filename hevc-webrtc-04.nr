@@ -150,16 +150,14 @@ SHOULD support proper interpretation of Display Orientation SEI
 messages.
 
 [RFC7798] Section 8.3 specifies the use of the Reference Picture Selection
-Indication (RPSI) in H.265. As noted in "Media Transport and Use of RTP in WebRTC"
-[RFC8834] Section 5.1.4:
-
-.in +0.3i
-Receivers that detect that encoder-decoder synchronization has been lost SHOULD
-generate an RPSI feedback message if the codec being used supports reference-picture
-selection. An RTP packet-stream sender that receives such an RPSI message SHOULD
-act on that messages to change the reference picture, if it is possible to do
-so within the available bandwidth constraints and with the codec being used.
-.in -0.3i
+Indication (RPSI) in H.265. Receivers that detect that H.265 encoder-decoder
+synchronization has been lost SHOULD generate an RPSI feedback message if
+support for RPSI has been negotiated, unless the receiver has knowledge that
+the sender does not support RPSI. Such knowledge can be established during
+capability exchange or through previously sent RPSI requests that were
+not replied to by the sender through the use of a non-IRAP picture.
+An RTP packet-stream sender that receives an RPSI message MUST act
+on that message, and SHOULD change the reference picture.
 
 Unless otherwise signaled, WebRTC implementations that support H.265 MUST encode
 and decode pixels with an implied 1:1 (square) aspect ratio.
@@ -214,10 +212,6 @@ RFC 7798, DOI 10.17487/RFC7798, March 2016,
 Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words",
 RFC 8174, DOI 10.17487/RFC8174, May 2017,
 <https://www.rfc-editor.org/info/rfc8174>.
-.IP [RFC8834]
-Perkins, C., Westerlund, M. and J. Ott., "Media Transport and Use of
-RTP in WebRTC", RFC 8834, DOI 10.17487/RFC8834, January 2021,
-<https://www.rfc-editor.org/info/rfc8834>.
 .NH 2
 .R
 Informative References
