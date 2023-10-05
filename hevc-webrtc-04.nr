@@ -124,8 +124,16 @@ Implementations supporting H.265 that conform to this specification MUST support
 receiving H.265 and MAY support sending H.265. 
 
 For the H.265 [H.265] codec, endpoints MUST support the payload formats
-defined in [RFC7798].  In addition, they MUST support Main Profile
+defined in [RFC7798]. In addition, they MUST support Main Profile
 Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4 (level-id=120).
+
+[RFC7798] Section 4.5 defines how Temporal Scalability Control Information (TSCI)
+is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
+A WebRTC implementation that has negotiated use of RTP header extensions
+containing TSCI information (such as the Dependency Descriptor [DD]) SHOULD 
+NOT send TSCI information within the PACI.  If TSCI information is
+being received in an RTP header extension, implementations MUST
+ignore TSCI information contained in the PACI.
 
 Implementations of the H.265 codec have utilized a wide variety of
 optional parameters.  To improve interoperability, the following
@@ -177,7 +185,11 @@ References
 .NH 2
 .R
 Normative References
-.IP [H.265] 15
+.IP [DD] 15
+Alliance for Open Media (AoMedia), "Dependency Descriptor RTP Header Extension",
+https://aomediacodec.github.io/av1-rtp-spec/#dependency-descriptor-rtp-header-extension,
+retrieved September 19, 2023.
+.IP [H.265]
 ITU-T, "High efficiency video coding", ITU-T Recommendation H.265, April 2013.
 .IP [RFC2119]
 Bradner, S., "Key words for use in RFCs to Indicate
