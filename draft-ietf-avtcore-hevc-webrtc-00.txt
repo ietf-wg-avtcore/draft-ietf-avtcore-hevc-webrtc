@@ -57,6 +57,7 @@ Status of This Memo
 
 Aboba & Hancke               Standards Track                    [Page 1]
 
+^L
 INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
 
 
@@ -80,7 +81,7 @@ Table of Contents
      1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  H.265 Support . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
    5. References . . . . . . . . . . . . . . . . . . . . . . . . . .   5
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
@@ -113,6 +114,7 @@ Table of Contents
 
 Aboba & Hancke               Standards Track                    [Page 2]
 
+^L
 INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
 
 
@@ -168,15 +170,15 @@ INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
 
 
 Aboba & Hancke               Standards Track                    [Page 3]
-
-INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
+^L
+INTERNET-DRAFT          H.265 Profile for WebRTC          9 October 2023
 
 
    tx-mode: Implementations SHOULD NOT include this parameter within
    SDP.  If no tx-mode parameter is present, a value of "SRST" MUST be
    inferred.  Implementations MUST support "SRST"; support for "MRST"
-   and "MRMT" is OPTIONAL. Implementations that do not support "MRST"
-   or "MRMT" MUST NOT include these tx-mode values in SDP.
+   and "MRMT" is OPTIONAL. Implementations that do not support "MRST" or
+   "MRMT" MUST NOT include these tx-mode values in SDP.
 
    sprop-sps, sprop-pps, sprop-vps, sprop-sei: H.265 allows sequence and
    picture information to be sent both in-band and out-of-band.  WebRTC
@@ -197,13 +199,13 @@ INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
    RPSI feedback message only as a reference picture selection request,
    and MUST NOT use it as positive acknowledgement. Receivers that
    detect that H.265 encoder-decoder synchronization has been lost
-   SHOULD generate an RPSI feedback message if support for RPSI has
-   been negotiated, unless the receiver has knowledge that the sender
-   does not support RPSI. Such knowledge can be established during
-   capability exchange or through previously sent RPSI requests that
-   were not replied to by the sender through the use of a non-IRAP
-   picture. An RTP packet-stream sender that receives an RPSI message
-   MUST act on that message, and SHOULD change the reference picture.
+   SHOULD generate an RPSI feedback message if support for RPSI has been
+   negotiated, unless the receiver has knowledge that the sender does
+   not support RPSI. Such knowledge can be established during capability
+   exchange or through previously sent RPSI requests that were not
+   replied to by the sender through the use of a non-IRAP picture.  An
+   RTP packet-stream sender that receives an RPSI message MUST act on
+   that message, and SHOULD change the reference picture.
 
    Unless otherwise signaled, WebRTC implementations that support H.265
    MUST encode and decode pixels with an implied 1:1 (square) aspect
@@ -218,17 +220,19 @@ INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
    advised to take note of the "Security Considerations" Section 9 of
    [RFC7798], including requirements pertaining to SEI messages.
 
-4.  IANA Considerations
 
-   This document does not require actions by IANA.
 
 
 
 
 Aboba & Hancke               Standards Track                    [Page 4]
-
-INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
+^L
+INTERNET-DRAFT          H.265 Profile for WebRTC          9 October 2023
 
+
+4.  IANA Considerations
+
+   This document does not require actions by IANA.
 
 5.  References
 
@@ -273,18 +277,18 @@ INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
                https://github.com/WebKit/WebKit/pull/15494 (work in
                progress), retrieved July 9, 2023.
 
-[HEVC-Chrome]  "Issue 13485: Need the support of H.265",
-               https://bugs.chromium.org/p/webrtc/issues/detail?
-               id=13485 (work in progress), submitted December 8, 2021.
-
 
 
 
 
 Aboba & Hancke               Standards Track                    [Page 5]
-
-INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
+^L
+INTERNET-DRAFT          H.265 Profile for WebRTC          9 October 2023
 
+
+[HEVC-Chrome]  "Issue 13485: Need the support of H.265",
+               https://bugs.chromium.org/p/webrtc/issues/detail?
+               id=13485 (work in progress), submitted December 8, 2021.
 
 Acknowledgments
 
