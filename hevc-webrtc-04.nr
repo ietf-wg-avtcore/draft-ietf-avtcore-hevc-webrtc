@@ -16,7 +16,7 @@
 .tl 'AVTCORE Working Group''B. Aboba'
 .tl 'INTERNET-DRAFT''P. Hancke'
 .tl 'Category: Standards Track''Microsoft Corporation'
-.tl 'Expires: April 05, 2024''\*(DY'
+.tl 'Expires: April 09, 2024''\*(DY'
 .ad l
 .LP
 .LP
@@ -54,7 +54,7 @@ time.
 It is inappropriate to use Internet-Drafts as reference
 material or to cite them other than as "work in progress."
 
-This Internet-Draft will expire on April 05, 2024.
+This Internet-Draft will expire on April 09, 2024.
 .in -0.3i
 .bp
 Copyright Notice
@@ -81,7 +81,7 @@ Table of Contents
   1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
 2.  H.265 Support . . . . . . . . . . . . . . . . . . . . . . . .   3
 3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
 5. References . . . . . . . . . . . . . . . . . . . . . . . . . .   5
   5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
   5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
