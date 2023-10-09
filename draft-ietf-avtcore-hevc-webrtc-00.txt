@@ -7,7 +7,7 @@
 AVTCORE Working Group                                           B. Aboba
 INTERNET-DRAFT                                                 P. Hancke
 Category: Standards Track                          Microsoft Corporation
-Expires: April 05, 2024                                   2 October 2023
+Expires: April 09, 2024                                   9 October 2023
 
 
                         H.265 Profile for WebRTC
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 05, 2024.
+   This Internet-Draft will expire on April 09, 2024.
 
 
 
@@ -174,9 +174,9 @@ INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
 
    tx-mode: Implementations SHOULD NOT include this parameter within
    SDP.  If no tx-mode parameter is present, a value of "SRST" MUST be
-   inferred.  Support for the "MRST" and "MRMT" modes is OPTIONAL;
-   implementations that do not support the "MRST" or "MRMT" modes MUST
-   NOT include these modes in the tx-mode parameter.
+   inferred.  Implementations MUST support "SRST"; support for "MRST"
+   and "MRMT" is OPTIONAL. Implementations that do not support "MRST"
+   or "MRMT" MUST NOT include these tx-mode values in SDP.
 
    sprop-sps, sprop-pps, sprop-vps, sprop-sei: H.265 allows sequence and
    picture information to be sent both in-band and out-of-band.  WebRTC
@@ -193,15 +193,17 @@ INTERNET-DRAFT          H.265 Profile for WebRTC          2 October 2023
    messages.
 
    [RFC7798] Section 8.3 specifies the use of the Reference Picture
-   Selection Indication (RPSI) in H.265. Receivers that detect that
-   H.265 encoder-decoder synchronization has been lost SHOULD generate
-   an RPSI feedback message if support for RPSI has been negotiated,
-   unless the receiver has knowledge that the sender does not support
-   RPSI. Such knowledge can be established during capability exchange or
-   through previously sent RPSI requests that were not replied to by the
-   sender through the use of a non-IRAP picture.  An RTP packet-stream
-   sender that receives an RPSI message MUST act on that message, and
-   SHOULD change the reference picture.
+   Selection Indication (RPSI) in H.265. Implementations MUST use the
+   RPSI feedback message only as a reference picture selection request,
+   and MUST NOT use it as positive acknowledgement. Receivers that
+   detect that H.265 encoder-decoder synchronization has been lost
+   SHOULD generate an RPSI feedback message if support for RPSI has
+   been negotiated, unless the receiver has knowledge that the sender
+   does not support RPSI. Such knowledge can be established during
+   capability exchange or through previously sent RPSI requests that
+   were not replied to by the sender through the use of a non-IRAP
+   picture. An RTP packet-stream sender that receives an RPSI message
+   MUST act on that message, and SHOULD change the reference picture.
 
    Unless otherwise signaled, WebRTC implementations that support H.265
    MUST encode and decode pixels with an implied 1:1 (square) aspect
