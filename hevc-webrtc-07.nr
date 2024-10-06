@@ -1,4 +1,4 @@
-.\" format this document with "rfc hevc-webrtc-07.nr draft-ietf-avtcore-hevc-webrtc-03.txt"
+.\" format this document with "rfc hevc-webrtc-08.nr draft-ietf-avtcore-hevc-webrtc-04.txt"
 .nr HY 0
 .pl 10.0i
 .po 0
@@ -16,7 +16,7 @@
 .tl 'AVTCORE Working Group''B. Aboba'
 .tl 'INTERNET-DRAFT''Microsoft Corporation'
 .tl 'Category: Standards Track''P. Hancke'
-.tl 'Expires: November 10, 2024''Facebook Inc.'
+.tl 'Expires: March 10, 2025''Facebook Inc.'
 .tl '''\*(DY'
 .ad l
 .LP
@@ -24,7 +24,7 @@
 .ce
 H.265 Profile for WebRTC
 .ce
-draft-ietf-avtcore-hevc-webrtc-03.txt
+draft-ietf-avtcore-hevc-webrtc-04.txt
 
 Abstract
 
@@ -55,7 +55,7 @@ time.
 It is inappropriate to use Internet-Drafts as reference
 material or to cite them other than as "work in progress."
 
-This Internet-Draft will expire on November 10, 2024.
+This Internet-Draft will expire on March 10, 2025.
 .in -0.3i
 .bp
 Copyright Notice
@@ -180,10 +180,10 @@ level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
 value of 93 (i.e., level 3.1) MUST be inferred.
 
-tx-mode: Implementations SHOULD NOT include this parameter within SDP.
+tx-mode: Implementations SHOULD include this parameter within SDP.
 If no tx-mode parameter is present, a value of "SRST" MUST be inferred.
 Implementations MUST support "SRST"; support for "MRST" and "MRMT"
-is OPTIONAL. Implementations that do not support "MRST" or
+are OPTIONAL. Implementations that do not support "MRST" or
 "MRMT" MUST NOT include these tx-mode values in SDP.
 
 sprop-sps, sprop-pps, sprop-vps, sprop-sei: H.265 allows sequence and picture information
