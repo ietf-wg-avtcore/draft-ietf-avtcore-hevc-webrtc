@@ -80,14 +80,15 @@ Table of Contents
 .nf
 1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
   1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
-2.  H.265 Support . . . . . . . . . . . . . . . . . . . . . . . .   3
-3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-5. References . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-  5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-  5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-Acknowledgments   . . . . . . . . . . . . . . . . . . . . . . . .   6
-Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
+  1.2   Abbreviations . . . . . . . . . . . . . . . . . . . . . .   3
+2.  H.265 Support . . . . . . . . . . . . . . . . . . . . . . . .   4
+3.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+5. References . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+  5.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
+  5.2.  Informative References  . . . . . . . . . . . . . . . . .   7
+Acknowledgments   . . . . . . . . . . . . . . . . . . . . . . . .   7
+Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 .fi
 .in -0.3i
 .bp
@@ -115,6 +116,34 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
 capitals, as shown here.
 .in -0.3i
+.NH 2
+.R
+Abbreviations
+
+.in +0.3i
+ AP       Aggregation Packet
+ BLA      Broken Link Access
+ CRA      Clean Random Access
+ FU       Fragmentation Unit
+ IDR      Instantaneous Decoding Refresh
+ IRAP     Intra Random Access Point
+ MANE     Media-Aware Network Element
+ MRMT     Multiple RTP streams on Multiple media Transports
+ MRST     Multiple RTP streams on a Single media Transport
+ NAL      Network Abstraction Layer
+ NALU     Network Abstraction Layer Unit
+ PACI     PAyload Content Information
+ PPS      Picture Parameter Set
+ SEI      Supplemental Enhancement Information
+ SFM      Selectively Forwarding Middlebox
+ SPS      Sequence Parameter Set
+ SRST     Single RTP stream on a Single media Transport
+ TID      Temporal Identifier
+ TSCI     Temporal Scalability Control Information
+ VCL      Video Coding Layer
+ VPS      Video Parameter Set
+.in -0.3i
+.bp
 .NH 1
 .R
 H.265 Support
@@ -128,7 +157,14 @@ For the H.265 [H.265] codec, endpoints MUST support the payload formats
 defined in [RFC7798]. In addition, they MUST support Main Profile
 Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4 (level-id=120).
 
-[RFC7798] Section 4.5 defines how Temporal Scalability Control Information (TSCI)
+All NAL units included within an RTP payload (including within APs) MUST have the same
+TID value.  This includes both VCL and non-VCL NAL units.  This ensures that an SFM
+will only forward RTP packets to a participant corresponding
+to the operating point chosen by the SFM.  For example, if the SFM choses to
+only forward base layer frames to a participant, the participant will not
+also receive NAL units with a TID corresponding to an extension layer.
+
+[RFC7798] Section 4.5 defines how TSCI
 is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
 A WebRTC implementation that has negotiated use of RTP header extensions
 containing TSCI information (such as the Dependency Descriptor [DD]) SHOULD 
