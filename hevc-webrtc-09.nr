@@ -156,12 +156,12 @@ For the H.265 [H.265] codec, endpoints MUST support the payload formats
 defined in [RFC7798]. In addition, they MUST support Main Profile
 Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4 (level-id=120).
 
-All NAL units included within an RTP payload (including within APs) MUST have the same
-TID value.  This includes both VCL and non-VCL NAL units.  This ensures that an SFM
-will only forward RTP packets to a participant corresponding
-to the operating point chosen by the SFM.  For example, if the SFM choses to
-only forward base layer frames to a participant, the participant will not
-also receive NAL units with a TID corresponding to an extension layer.
+All NAL units included within an RTP payload (including both VCL and non-VCL
+NAL units) MUST have the same TID value. If an HEVC bitstream contains
+non-VCL NAL units with a TID value different than the TID value of the VCL
+NAL units in the same AP, the VCL NAL units and non-VCL NAL units
+MUST be packetized within distinct RTP packets.  This ensures that an SFM
+can forward the VCL and non-VCL NAL units to the correct set of participants.
 
 [RFC7798] Section 4.5 defines how TSCI
 is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
