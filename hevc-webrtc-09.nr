@@ -169,11 +169,11 @@ As noted in [RFC7798] Section 4.4.2:
       unit header may be different than the TID value of the VCL NAL
       units in the same AP."
 
-If an RTP payload contains VCL NAL units with a TID value (either aggregated
-or not), the payload MUST NOT also include an AP with a different TID value.
-Instead the VCL NAL units and non-VCL NAL units contained within an AP
-MUST be packetized within distinct RTP packets.  This ensures that an SFM
-can forward the VCL and non-VCL NAL units to the correct set of participants.
+All VCL NAL units within an RTP payload MUST have the same TID value.
+However, such an RTP payload MUST NOT also include an AP with a different
+TID value.  Instead, the AP MUST be packetized within a distinct RTP packet.
+This ensures that a MANE or SFM can forward VCL and non-VCL NAL units to
+the correct set of participants.
 
 [RFC7798] Section 4.5 defines how TSCI
 is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
