@@ -156,12 +156,11 @@ For the H.265 [H.265] codec, endpoints MUST support the payload formats
 defined in [RFC7798]. In addition, they MUST support Main Profile
 Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4 (level-id=120).
 
-All VCL NAL units within an RTP payload MUST have the same TID value.
-Non-VCL NAL units contained within an AP can have different TID values.
-As noted in [RFC7798] Section 4.4.2:
+[RFC7798] Section 4.4.2 describes how APs are carried within RTP payloads: 
 
-  "The value of TID MUST be the lowest value of TID of all the aggregated
-   NAL units.
+  "An AP consists of a payload header (denoted as PayloadHdr) followed
+   by two or more aggregation units... The value of TID MUST be the
+   lowest value of TID of all the aggregated NAL units.
 
       Informative note: All VCL NAL units in an AP have the same TID
       value since they belong to the same access unit.  However, an AP
@@ -169,11 +168,11 @@ As noted in [RFC7798] Section 4.4.2:
       unit header may be different than the TID value of the VCL NAL
       units in the same AP."
 
-All VCL NAL units within an RTP payload MUST have the same TID value.
-However, such an RTP payload MUST NOT also include an AP with a different
-TID value.  Instead, the AP MUST be packetized within a distinct RTP packet.
-This ensures that a MANE or SFM can forward VCL and non-VCL NAL units to
-the correct set of participants.
+Within an RTP payload, VCL NAL units MUST NOT be aggregated with
+non-VCL NAL units with a lower TID value.  Instead the non-VCL
+NAL units with a lower TID value MUST be packetized within a distinct
+RTP packet.  This ensures that a MANE or SFM can forward VCL and
+non-VCL NAL units to the correct set of participants.
 
 [RFC7798] Section 4.5 defines how TSCI
 is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
