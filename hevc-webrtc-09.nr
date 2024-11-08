@@ -1,4 +1,4 @@
-.\" format this document with "rfc hevc-webrtc-09.nr draft-ietf-avtcore-hevc-webrtc-04.txt"
+.\" format this document with "rfc hevc-webrtc-10.nr draft-ietf-avtcore-hevc-webrtc-05.txt"
 .nr HY 0
 .pl 10.0i
 .po 0
@@ -16,7 +16,7 @@
 .tl 'AVTCORE Working Group''B. Aboba'
 .tl 'INTERNET-DRAFT''Microsoft Corporation'
 .tl 'Category: Standards Track''P. Hancke'
-.tl 'Expires: April 6, 2025''Facebook Inc.'
+.tl 'Expires: May 6, 2025''Facebook Inc.'
 .tl '''\*(DY'
 .ad l
 .LP
@@ -24,7 +24,7 @@
 .ce
 H.265 Profile for WebRTC
 .ce
-draft-ietf-avtcore-hevc-webrtc-04.txt
+draft-ietf-avtcore-hevc-webrtc-05.txt
 
 Abstract
 
@@ -54,7 +54,7 @@ and may be updated, replaced, or obsoleted by other documents at any
 time.  It is inappropriate to use Internet-Drafts as reference
 material or to cite them other than as "work in progress."
 
-This Internet-Draft will expire on April 6, 2025.
+This Internet-Draft will expire on May 6, 2025.
 .in -0.3i
 .bp
 Copyright Notice
@@ -81,6 +81,8 @@ Table of Contents
   1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
   1.2   Abbreviations . . . . . . . . . . . . . . . . . . . . . .   3
 2.  H.265 Support . . . . . . . . . . . . . . . . . . . . . . . .   4
+  2.1   Parameters  . . . . . . . . . . . . . . . . . . . . . . .
+  2.2   Feedback  . . . . . . . . . . . . . . . . . . . . . . . .
 3.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
 4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
 5. References . . . . . . . . . . . . . . . . . . . . . . . . . .   5
@@ -156,6 +158,14 @@ For the H.265 [H.265] codec, endpoints MUST support the payload formats
 defined in [RFC7798]. In addition, they MUST support Main Profile
 Level 3.1 (level-id=93) and SHOULD support Main Profile Level 4 (level-id=120).
 
+[RFC7798] Section 4.5 defines how TSCI
+is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
+A WebRTC implementation that has negotiated use of RTP header extensions
+containing TSCI information (such as the Dependency Descriptor [DD]) SHOULD 
+NOT send TSCI information within the PACI.  If TSCI information is
+being received in an RTP header extension, implementations MUST
+ignore TSCI information contained in the PACI.
+
 [RFC7798] Section 4.4.2 describes how APs are carried within RTP payloads: 
 
   "An AP consists of a payload header (denoted as PayloadHdr) followed
@@ -173,15 +183,13 @@ non-VCL NAL units with a lower TID value.  Instead the non-VCL
 NAL units with a lower TID value MUST be packetized within a distinct
 RTP packet.  This ensures that a MANE or SFM can forward VCL and
 non-VCL NAL units to the correct set of participants.
+.in -0.3i
 
-[RFC7798] Section 4.5 defines how TSCI
-is communicated using PACI Extensions defined in [RFC7798] Section 4.4.4.2.
-A WebRTC implementation that has negotiated use of RTP header extensions
-containing TSCI information (such as the Dependency Descriptor [DD]) SHOULD 
-NOT send TSCI information within the PACI.  If TSCI information is
-being received in an RTP header extension, implementations MUST
-ignore TSCI information contained in the PACI.
+.NH 2
+.R
+Parameters
 
+.in +0.3i
 Implementations of the H.265 codec have utilized a wide variety of
 optional parameters.  To improve interoperability, the following
 parameter settings are specified:
@@ -210,6 +218,15 @@ not signaled as part of the SDP, H.265 implementations MAY send and
 SHOULD support proper interpretation of Display Orientation SEI
 messages.
 
+Unless otherwise signaled, WebRTC implementations that support H.265 MUST encode
+and decode pixels with an implied 1:1 (square) aspect ratio.
+.in -0.3i
+
+.NH 2
+.R
+Feedback
+
+.in +0.3i
 [RFC7798] Section 8.3 specifies the use of the Reference Picture Selection
 Indication (RPSI) in H.265. Implementations MUST use the RPSI feedback 
 message only as a reference picture selection request, and MUST NOT use it
@@ -221,10 +238,8 @@ capability exchange or through previously sent RPSI requests that were
 not replied to by the sender through the use of a non-IRAP picture.
 An RTP packet-stream sender that receives an RPSI message MUST act
 on that message, and SHOULD change the reference picture.
-
-Unless otherwise signaled, WebRTC implementations that support H.265 MUST encode
-and decode pixels with an implied 1:1 (square) aspect ratio.
 .in -0.3i
+
 .NH 1
 .R
 Security Considerations
