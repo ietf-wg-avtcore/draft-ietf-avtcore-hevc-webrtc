@@ -199,7 +199,8 @@ parameter settings are specified:
 
 level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
-value of 93 (i.e., Level 3.1) MUST be inferred. As noted in [RFC7798]
+value of 93 (i.e., Level 3.1) MUST be inferred.
+As noted in [RFC7798]
 Section 5, the "highest level indicated by the answer is either equal to
 or lower than that in the offer."
 
