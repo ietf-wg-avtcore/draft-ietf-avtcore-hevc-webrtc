@@ -16,7 +16,7 @@
 .tl 'AVTCORE Working Group''B. Aboba'
 .tl 'INTERNET-DRAFT''Microsoft Corporation'
 .tl 'Category: Standards Track''P. Hancke'
-.tl 'Expires: May 6, 2025''Facebook Inc.'
+.tl 'Expires: May 10, 2025''Facebook Inc.'
 .tl '''\*(DY'
 .ad l
 .LP
@@ -54,7 +54,7 @@ and may be updated, replaced, or obsoleted by other documents at any
 time.  It is inappropriate to use Internet-Drafts as reference
 material or to cite them other than as "work in progress."
 
-This Internet-Draft will expire on May 6, 2025.
+This Internet-Draft will expire on May 10, 2025.
 .in -0.3i
 .bp
 Copyright Notice
@@ -199,7 +199,9 @@ parameter settings are specified:
 
 level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
-value of 93 (i.e., Level 3.1) MUST be inferred.
+value of 93 (i.e., Level 3.1) MUST be inferred. As noted in [RFC7798]
+Section 5, the "highest level indicated by the answer is either equal to
+or lower than that in the offer."
 
 tx-mode: Implementations SHOULD include this parameter within SDP.
 If no tx-mode parameter is present, a value of "SRST" MUST be inferred.
