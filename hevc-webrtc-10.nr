@@ -194,8 +194,10 @@ Parameters
 
 .in +0.3i
 Implementations of the H.265 codec have utilized a wide variety of
-optional parameters.  To improve interoperability, the following
-parameter settings are specified:
+optional parameters. The H.265 "media format" includes the following
+fmtp parameters: profile-id, tier-flag, and tx-mode.
+
+To improve interoperability, the following parameter settings are specified:
 
 level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
