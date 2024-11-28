@@ -163,6 +163,18 @@ not signaled as part of the SDP, H.265 implementations MAY send and
 SHOULD support proper interpretation of Display Orientation SEI
 messages.
 
+[RFC7798] Section 8.3 specifies the use of the Reference Picture Selection
+Indication (RPSI) in H.265. Implementations MUST use the RPSI feedback 
+message only as a reference picture selection request, and MUST NOT use it
+as positive acknowledgement. Receivers that detect that H.265 encoder-decoder
+synchronization has been lost SHOULD generate an RPSI feedback message if
+support for RPSI has been negotiated, unless the receiver has knowledge that
+the sender does not support RPSI. Such knowledge can be established during
+capability exchange or through previously sent RPSI requests that were
+not replied to by the sender through the use of a non-IRAP picture.
+An RTP packet-stream sender that receives an RPSI message MUST act
+on that message, and SHOULD change the reference picture.
+
 Unless otherwise signaled, WebRTC implementations that support H.265 MUST encode
 and decode pixels with an implied 1:1 (square) aspect ratio.
 .in -0.3i
