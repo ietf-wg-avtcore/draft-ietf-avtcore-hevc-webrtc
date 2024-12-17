@@ -201,9 +201,13 @@ To improve interoperability, the following parameter settings are specified:
 
 level-id: Implementations SHOULD include this parameter within SDP and
 MUST interpret it when receiving it. If no level-id is present, a
-value of 93 (i.e., Level 3.1) MUST be inferred. As noted in [RFC7798]
-Section 5, the "highest level indicated by the answer is either equal to
-or lower than that in the offer."
+value of 93 (i.e., Level 3.1) MUST be inferred.  On a sendrecv
+m-line, the offered level-id represents the maximum that can be
+both sent and received; on a sendonly m-line, the offered level-id
+represents the maximum that can be sent;  on a recvonly m-line,
+the offered level-id represents the maximum that can be received.
+As noted in [RFC7798] Section 5, the "highest level indicated by
+the answer is either equal to or lower than that in the offer."
 
 tx-mode: Implementations SHOULD include this parameter within SDP.
 If no tx-mode parameter is present, a value of "SRST" MUST be inferred.
