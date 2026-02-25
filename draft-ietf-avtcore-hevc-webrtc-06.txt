@@ -214,12 +214,15 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 2.1.  Parameters
 
    Implementations of the H.265 codec have utilized a wide variety of
-   optional parameters.  To improve interoperability, the following
-   parameter settings are specified:
+   optional parameters.  The H.265 "media format" includes the following
+   fmtp parameters: profile-id, tier-flag, and tx-mode.
+
+   To improve interoperability, the following parameter settings are
+   specified:
 
    level-id: Implementations SHOULD include this parameter within SDP
    and MUST interpret it when receiving it. If no level-id is present, a
-   value of 93 (i.e., Level 3.1) MUST be inferred. As noted in [RFC7798]
+   value of 93 (i.e., Level 3.1) MUST be inferred.
 
 
 
@@ -228,8 +231,14 @@ Aboba & Hancke               Standards Track                    [Page 4]
 INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
 
-   Section 5, the "highest level indicated by the answer is either equal
-   to or lower than that in the offer."
+   On a sendrecv m-line, the offered level-id represents the maximum
+   that can be both sent and received; on a sendonly m-line, the 
+   offered level-id represents the maximum that can be sent; on a
+   recvonly m-line, the offered level-id represents the maximum that
+   can be received.
+
+   As noted in [RFC7798] Section 5, the "highest level indicated by the
+   answer is either equal to or lower than that in the offer."
 
    tx-mode: Implementations SHOULD include this parameter within SDP.
    If no tx-mode parameter is present, a value of "SRST" MUST be
