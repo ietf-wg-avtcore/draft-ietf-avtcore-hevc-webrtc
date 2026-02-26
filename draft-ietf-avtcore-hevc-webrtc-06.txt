@@ -82,7 +82,8 @@ Table of Contents
    2.  H.265 Support . . . . . . . . . . . . . . . . . . . . . . . .   4
      2.1   Parameters  . . . . . . . . . . . . . . . . . . . . . . .   4
      2.2   Feedback  . . . . . . . . . . . . . . . . . . . . . . . .   5
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+     2.2   Packetization . . . . . . . . . . . . . . . . . . . . . .   5
+   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    5. References . . . . . . . . . . . . . . . . . . . . . . . . . .   6
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
@@ -280,10 +281,13 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
    that message, and SHOULD change the reference picture.
 
 
-3.  Security Considerations
+2.3.  Packetization
 
-   This document is subject to the security considerations described in
-   Section 7 of [RFC7742].
+   [RFC7798] Section 5 specifiies the packetization rules for H.265.
+   In addition to these rules, Prefix SEI NAL units in an IRAP picture
+   MUST NOT be packetized before any VPS, SPS and PPS NAL units.
+   This ensures they will be assembled as part of IRAP picture without
+   being dropped.
 
 
 
@@ -292,6 +296,11 @@ Aboba & Hancke               Standards Track                    [Page 5]
 
 INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
+
+3.  Security Considerations
+
+   This document is subject to the security considerations described in
+   Section 7 of [RFC7742].
 
    In addition to those security considerations, H.265 implementers are
    advised to take note of the "Security Considerations" Section 9 of
@@ -333,10 +342,6 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
                Video Coding (HEVC)", RFC 7798, DOI 10.17487/RFC7798,
                March 2016, <https://www.rfc-editor.org/info/rfc7798>.
 
-[RFC8174]      Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-               2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May
-               2017, <https://www.rfc-editor.org/info/rfc8174>.
-
 
 
 
@@ -347,6 +352,12 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 Aboba & Hancke               Standards Track                    [Page 6]
 
 INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
+
+
+
+[RFC8174]      Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+               2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May
+               2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 
 5.2.  Informative References
