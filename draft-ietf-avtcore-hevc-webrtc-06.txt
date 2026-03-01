@@ -7,12 +7,14 @@
 AVTCORE Working Group                                           B. Aboba
 INTERNET-DRAFT                                     Microsoft Corporation
 Category: Standards Track                                      P. Hancke
-Expires: May 10, 2025                                      Facebook Inc.
-                                                         9 November 2024
+Expires: September 3rd, 2026
+                                                             Jianlin Qiu
+                                                       Intel Corporation
+                                                            2 March 2026
 
 
                         H.265 Profile for WebRTC
-                 draft-ietf-avtcore-hevc-webrtc-05.txt
+                 draft-ietf-avtcore-hevc-webrtc-06.txt
 
 Abstract
 
@@ -38,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 10, 2025.
+   This Internet-Draft will expire on September 3, 2026.
 
 
 
@@ -53,16 +55,14 @@ Status of This Memo
 
 
 
-
-
-Aboba & Hancke               Standards Track                    [Page 1]
+Aboba, et al.                Standards Track                    [Page 1]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -112,9 +112,9 @@ Table of Contents
 
 
 
-Aboba & Hancke               Standards Track                    [Page 2]
+Aboba, et al.                Standards Track                    [Page 2]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
 1.  Introduction
@@ -168,9 +168,9 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
 
 
-Aboba & Hancke               Standards Track                    [Page 3]
+Aboba, et al.                Standards Track                    [Page 3]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
 2.  H.265 Support
@@ -227,9 +227,9 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
 
 
-Aboba & Hancke               Standards Track                    [Page 4]
+Aboba, et al.                Standards Track                    [Page 4]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
    On a sendrecv m-line, the offered level-id represents the maximum
@@ -278,6 +278,10 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
    MUST encode and decode pixels with an implied 1:1 (square) aspect
    ratio.
 
+Aboba, et al.                Standards Track                    [Page 5]
+
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+
 2.2.  Feedback
 
    [RFC7798] Section 8.3 specifies the use of the Reference Picture
@@ -305,9 +309,6 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
 
 
-Aboba & Hancke               Standards Track                    [Page 5]
-
-INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
 
 3.  Security Considerations
@@ -322,6 +323,10 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 4.  IANA Considerations
 
    This document does not require actions by IANA.
+
+Aboba, et al.                Standards Track                    [Page 6]
+
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 5.  References
 
@@ -338,8 +343,8 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
 [RFC2119]      Bradner, S., "Key words for use in RFCs to Indicate
                Requirement Levels", BCP 14, RFC 2119, DOI
-               10.17487/RFC2119, March 1997, <https://www.rfc-
-               editor.org/info/rfc2119>.
+               10.17487/RFC2119, March 1997,
+               <https://www.rfc-editor.org/info/rfc2119>.
 
 [RFC3550]      Schulzrinne, H., Casner, S., Frederick, R., and V.
                Jacobson, "RTP: A Transport Protocol for Real-Time
@@ -362,9 +367,9 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 
 
 
-Aboba & Hancke               Standards Track                    [Page 6]
+Aboba, et al.                Standards Track                    [Page 7]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
 
@@ -387,24 +392,25 @@ INTERNET-DRAFT          H.265 Profile for WebRTC         9 November 2024
 Acknowledgments
 
    We would like to thank Stephan Wenger, Jonathan Lennox, Harald
-   Alvestrand, Jianlin Qiu and Philip Eliasson for their discussions of
-   this problem space.
+   Alvestrand, Philip Eliasson and Henrik Bostrom for their discussions
+   of this problem space.
+
+   Bernard Aboba who was the driving force behind this specification
+   passed away on February 1st, 2025.
 
 Authors' Addresses
 
    Bernard Aboba
    Microsoft Corporation
-   One Microsoft Way
-   Redmond, WA  98052
-   United States of America
-
-   Email:  bernard.aboba@gmail.com
 
    Philipp Hancke
-   Facebook Inc.
 
    Email: philipp.hancke@gmail.com
 
+   Jianlin Qiu
+   Intel Corporation
+
+   Email: jianlin.qiu@intel.com
 
 
 
@@ -420,9 +426,5 @@ Authors' Addresses
 
 
 
-
-
-
-
-Aboba & Hancke               Standards Track                    [Page 7]
+Aboba, et al.                Standards Track                    [Page 8]
 
