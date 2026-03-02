@@ -5,16 +5,15 @@
 
 
 AVTCORE Working Group                                           B. Aboba
-INTERNET-DRAFT                                     Microsoft Corporation
-Category: Standards Track                                      P. Hancke
-Expires: September 3rd, 2026
-                                                             Jianlin Qiu
+INTERNET-DRAFT                                                 P. Hancke
+Category: Standards Track                          Microsoft Corporation
+Expires: September 3, 2026                                        J. Qiu
                                                        Intel Corporation
                                                             2 March 2026
 
 
                         H.265 Profile for WebRTC
-                 draft-ietf-avtcore-hevc-webrtc-06.txt
+                 draft-ietf-avtcore-hevc-webrtc-07.txt
 
 Abstract
 
@@ -215,7 +214,7 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 2.1.  Parameters
 
    Implementations of the H.265 codec have utilized a wide variety of
-   optional parameters.  The H.265 "media format" includes the following
+   optional parameters. The H.265 "media format" includes the following
    fmtp parameters: profile-id, tier-flag, and tx-mode.
 
    To improve interoperability, the following parameter settings are
@@ -360,7 +359,9 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
                Video Coding (HEVC)", RFC 7798, DOI 10.17487/RFC7798,
                March 2016, <https://www.rfc-editor.org/info/rfc7798>.
 
-
+[RFC8174]      Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+               2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May
+               2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 
 
@@ -371,11 +372,6 @@ Aboba, et al.                Standards Track                    [Page 7]
 
 INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
-
-
-[RFC8174]      Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-               2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May
-               2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 
 5.2.  Informative References
@@ -404,8 +400,7 @@ Authors' Addresses
    Microsoft Corporation
 
    Philipp Hancke
-
-   Email: philipp.hancke@gmail.com
+   Email: philipp.hancke@googlemail.com
 
    Jianlin Qiu
    Intel Corporation
