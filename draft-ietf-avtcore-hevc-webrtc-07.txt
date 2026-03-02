@@ -5,14 +5,15 @@
 
 
 AVTCORE Working Group                                           B. Aboba
-INTERNET-DRAFT                                     Microsoft Corporation
-Category: Standards Track                                      P. Hancke
-Expires: May 14, 2025                                      Facebook Inc.
-                                                        14 November 2024
+INTERNET-DRAFT                                                 P. Hancke
+Category: Standards Track                          Microsoft Corporation
+Expires: September 3, 2026                                        J. Qiu
+                                                       Intel Corporation
+                                                            2 March 2026
 
 
                         H.265 Profile for WebRTC
-                 draft-ietf-avtcore-hevc-webrtc-06.txt
+                 draft-ietf-avtcore-hevc-webrtc-07.txt
 
 Abstract
 
@@ -38,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 14, 2025.
+   This Internet-Draft will expire on September 3, 2026.
 
 
 
@@ -53,16 +54,14 @@ Status of This Memo
 
 
 
-
-
-Aboba & Hancke               Standards Track                    [Page 1]
+Aboba, et al.                Standards Track                    [Page 1]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -82,6 +81,7 @@ Table of Contents
    2.  H.265 Support . . . . . . . . . . . . . . . . . . . . . . . .   4
      2.1   Parameters  . . . . . . . . . . . . . . . . . . . . . . .   4
      2.2   Feedback  . . . . . . . . . . . . . . . . . . . . . . . .   5
+     2.2   Packetization . . . . . . . . . . . . . . . . . . . . . .   5
    3.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    5. References . . . . . . . . . . . . . . . . . . . . . . . . . .   6
@@ -111,9 +111,9 @@ Table of Contents
 
 
 
-Aboba & Hancke               Standards Track                    [Page 2]
+Aboba, et al.                Standards Track                    [Page 2]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
 1.  Introduction
@@ -167,9 +167,9 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
 
 
 
-Aboba & Hancke               Standards Track                    [Page 3]
+Aboba, et al.                Standards Track                    [Page 3]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 
 2.  H.265 Support
@@ -220,22 +220,24 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
    To improve interoperability, the following parameter settings are
    specified:
 
-
-
-
-Aboba & Hancke               Standards Track                    [Page 4]
-
-INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
-
-
    level-id: Implementations SHOULD include this parameter within SDP
    and MUST interpret it when receiving it. If no level-id is present, a
-   value of 93 (i.e., Level 3.1) MUST be inferred.  On a sendrecv m-
-   line, the offered level-id represents the maximum that can be both
-   sent and received; on a sendonly m-line, the offered level-id
-   represents the maximum that can be sent;  on a recvonly m-line, the
-   offered level-id represents the maximum that can be received.  As
-   noted in [RFC7798] Section 5, the "highest level indicated by the
+   value of 93 (i.e., Level 3.1) MUST be inferred.
+
+
+
+Aboba, et al.                Standards Track                    [Page 4]
+
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+
+
+   On a sendrecv m-line, the offered level-id represents the maximum
+   that can be both sent and received; on a sendonly m-line, the 
+   offered level-id represents the maximum that can be sent; on a
+   recvonly m-line, the offered level-id represents the maximum that
+   can be received.
+
+   As noted in [RFC7798] Section 5, the "highest level indicated by the
    answer is either equal to or lower than that in the offer."
 
    tx-mode: Implementations SHOULD include this parameter within SDP.
@@ -258,9 +260,26 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
    SHOULD support proper interpretation of Display Orientation SEI
    messages.
 
+   [RFC7798] Section 8.3 specifies the use of the Reference Picture
+   Selection Indication (RPSI) in H.265. Implementations MUST use the
+   RPSI feedback message only as a reference picture selection request,
+   and MUST NOT use it as positive acknowledgement. Receivers that
+   detect that H.265 encoder-decoder synchronization has been lost
+   SHOULD generate an RPSI feedback message if support for RPSI has
+   been negotiated, unless the receiver has knowledge that the sender
+   does not support RPSI. Such knowledge can be established during
+   capability exchange or through previously sent RPSI requests that
+   were not replied to by the sender through the use of a non-IRAP
+   picture. An RTP packet-stream sender that receives an RPSI message
+   MUST act on that message, and SHOULD change the reference picture.
+
    Unless otherwise signaled, WebRTC implementations that support H.265
    MUST encode and decode pixels with an implied 1:1 (square) aspect
    ratio.
+
+Aboba, et al.                Standards Track                    [Page 5]
+
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 2.2.  Feedback
 
@@ -278,10 +297,17 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
    that message, and SHOULD change the reference picture.
 
 
+2.3.  Packetization
 
-Aboba & Hancke               Standards Track                    [Page 5]
-
-INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
+   [RFC7798] Section 5 specifiies the packetization rules for H.265.
+   In addition to these rules, Prefix SEI NAL units in an IRAP picture
+   MUST NOT be packetized before any VPS, SPS and PPS NAL units.
+   This ensures they will be assembled as part of IRAP picture without
+   being dropped.
+
+
+
+
 
 
 3.  Security Considerations
@@ -296,6 +322,10 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
 4.  IANA Considerations
 
    This document does not require actions by IANA.
+
+Aboba, et al.                Standards Track                    [Page 6]
+
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 5.  References
 
@@ -312,8 +342,8 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
 
 [RFC2119]      Bradner, S., "Key words for use in RFCs to Indicate
                Requirement Levels", BCP 14, RFC 2119, DOI
-               10.17487/RFC2119, March 1997, <https://www.rfc-
-               editor.org/info/rfc2119>.
+               10.17487/RFC2119, March 1997,
+               <https://www.rfc-editor.org/info/rfc2119>.
 
 [RFC3550]      Schulzrinne, H., Casner, S., Frederick, R., and V.
                Jacobson, "RTP: A Transport Protocol for Real-Time
@@ -335,9 +365,13 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
 
 
 
-Aboba & Hancke               Standards Track                    [Page 6]
+
+
+
+Aboba, et al.                Standards Track                    [Page 7]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
+INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+
 
 
 5.2.  Informative References
@@ -354,28 +388,24 @@ INTERNET-DRAFT          H.265 Profile for WebRTC        14 November 2024
 Acknowledgments
 
    We would like to thank Stephan Wenger, Jonathan Lennox, Harald
-   Alvestrand, Jianlin Qiu and Philip Eliasson for their discussions of
-   this problem space.
+   Alvestrand, Philip Eliasson and Henrik Bostrom for their discussions
+   of this problem space.
+
+   Bernard Aboba who was the driving force behind this specification
+   passed away on February 1st, 2025.
 
 Authors' Addresses
 
    Bernard Aboba
    Microsoft Corporation
-   One Microsoft Way
-   Redmond, WA  98052
-   United States of America
-
-   Email:  bernard.aboba@gmail.com
 
    Philipp Hancke
-   Facebook Inc.
+   Email: philipp.hancke@googlemail.com
 
-   Email: philipp.hancke@gmail.com
+   Jianlin Qiu
+   Intel Corporation
 
-
-
-
-
+   Email: jianlin.qiu@intel.com
 
 
 
@@ -391,5 +421,5 @@ Authors' Addresses
 
 
 
-Aboba & Hancke               Standards Track                    [Page 7]
+Aboba, et al.                Standards Track                    [Page 8]
 
