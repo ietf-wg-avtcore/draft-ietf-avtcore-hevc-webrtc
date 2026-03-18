@@ -7,13 +7,13 @@
 AVTCORE Working Group                                           B. Aboba
 INTERNET-DRAFT                                                 P. Hancke
 Category: Standards Track                          Microsoft Corporation
-Expires: September 3, 2026                                        J. Qiu
+Expires: September 19, 2026                                       J. Qiu
                                                        Intel Corporation
-                                                            2 March 2026
+                                                           18 March 2026
 
 
                         H.265 Profile for WebRTC
-                 draft-ietf-avtcore-hevc-webrtc-07.txt
+                 draft-ietf-avtcore-hevc-webrtc-08.txt
 
 Abstract
 
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 3, 2026.
+   This Internet-Draft will expire on September 19, 2026.
 
 
 
@@ -56,7 +56,7 @@ Status of This Memo
 
 Aboba, et al.                Standards Track                    [Page 1]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+INTERNET-DRAFT          H.265 Profile for WebRTC           18 March 2026
 
 
 Copyright Notice
@@ -113,7 +113,7 @@ Table of Contents
 
 Aboba, et al.                Standards Track                    [Page 2]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+INTERNET-DRAFT          H.265 Profile for WebRTC           18 March 2026
 
 
 1.  Introduction
@@ -123,8 +123,8 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
    time Transport Protocol (RTP) [RFC3550].  While "WebRTC Video
    Processing and Codec Requirements" [RFC7742] provides guidance for
    endpoints supporting the mandatory to implement VP8 and H.264 codecs,
-   it does not cover H.265. With H.265 support under development within
-   browsers [HEVC-WebKit][HEVC-Chrome] there is a need to for an
+   it does not cover H.265. With H.265 support shipped within browsers
+   ([HEVC-Chrome] and [HEVC-WebKit]) there is a need to for an
    interoperability profile of [RFC7798] for WebRTC implementations
    choosing to support H.265.
 
@@ -169,7 +169,7 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 Aboba, et al.                Standards Track                    [Page 3]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+INTERNET-DRAFT          H.265 Profile for WebRTC           18 March 2026
 
 
 2.  H.265 Support
@@ -228,7 +228,7 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 Aboba, et al.                Standards Track                    [Page 4]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+INTERNET-DRAFT          H.265 Profile for WebRTC           18 March 2026
 
 
    On a sendrecv m-line, the offered level-id represents the maximum
@@ -279,7 +279,7 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 Aboba, et al.                Standards Track                    [Page 5]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+INTERNET-DRAFT          H.265 Profile for WebRTC           18 March 2026
 
 2.2.  Feedback
 
@@ -325,7 +325,7 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 Aboba, et al.                Standards Track                    [Page 6]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+INTERNET-DRAFT          H.265 Profile for WebRTC           18 March 2026
 
 5.  References
 
@@ -370,20 +370,19 @@ INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
 
 Aboba, et al.                Standards Track                    [Page 7]
 
-INTERNET-DRAFT          H.265 Profile for WebRTC            2 March 2026
+INTERNET-DRAFT          H.265 Profile for WebRTC           18 March 2026
 
 
 
 5.2.  Informative References
 
-[HEVC-WebKit]  Shin, S. Qiu, J. and J. Zhu, "WebRTC HEVC RFC 7798 RTP
-               Payload Format Implementation",
-               https://github.com/WebKit/WebKit/pull/15494 (work in
-               progress), retrieved July 9, 2023.
+[HEVC-Chrome]  "H265 (HEVC) codec support in WebRTC",
+               https://chromestatus.com/feature/5153479456456704,
+               retrieved March 18, 2026.
 
-[HEVC-Chrome]  "Issue 13485: Need the support of H.265",
-               https://bugs.chromium.org/p/webrtc/issues/detail?
-               id=13485 (work in progress), submitted December 8, 2021.
+[HEVC-WebKit]  "WebKit Features in Safari 18.0",
+               https://webkit.org/blog/15865/webkit-features-in-
+               safari-18-0/, retrieved March 18, 2026.
 
 Acknowledgments
 
